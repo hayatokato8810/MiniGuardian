@@ -27,6 +27,10 @@ class StepperMotor:
 		self.name = name
 		self.pins = pins
 
+		for index in range(4):
+			GPIO.setup(self.pins[index],GPIO.OUT)
+			GPIO.output(self.pins[index], 0)
+
 	def step(self, direction):
 		for index in range(4):
 			GPIO.output(self.pins[index],StepperMotor.SEQ[self.pos][index])
